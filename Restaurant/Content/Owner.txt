@@ -1,0 +1,155 @@
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<html ng-app="OwnerModule">
+
+
+@{ ViewBag.Title = "Index"; }
+<head title="">
+    <style type="text/css">
+        #tblContainer, #tblcollections, #tblCRUD, td {
+            border: double;
+        }
+
+        th {
+            background-color: darkgray;
+        }
+
+        #dvcollection {
+            height: 500px;
+            overflow-y: scroll;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+            .pagination a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+                .pagination a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+                .pagination a:hover:not(.active) {
+                    background-color: #ddd;
+                }
+    </style>
+
+</head>
+
+<body>
+
+
+    <h2>All Owners</h2>
+
+    <div ng-controller="ownerController">
+        <div class="input-group">
+
+            <input type="text" id="ename" required ng-model="Ownername" placeholder="Enter Owner Name" />
+
+            <input type="button" id="save" value="Add" ng-click="save()" />
+            @*<input type="button" id="delete" value="Delete" ng-click="delete()" />*@
+
+        </div>
+
+
+        <table id="tblContainer">
+            <tr>
+                <td>
+                    <table id="tblCRUD">
+
+                        @*<tr>
+                                <td>
+                                    <span>EmpNo</span>
+                                </td>
+                                <td>
+                                    <input type="text" id="eno" readonly="readonly" ng-model="EmpNo" />
+                                </td>
+                            </tr>*@
+                        @*<tr>
+                                <td>
+                                    <span>EmpName</span>
+                                </td>
+                                <td>
+                                    <input type="text" id="ename" required ng-model="EmpName" />
+                                </td>
+                                <td>
+                                    <input type="button" id="save" value="Add" ng-click="save()" />
+                                </td>
+                            </tr>*@
+
+                        @*<tr>
+                                <td>
+                                    <input type="button" id="new" value="New" ng-click="clear()" />
+                                </td>
+
+                                <td>
+                                    <input type="button" id="delete" value="Delete" ng-click="delete()" />
+                                </td>
+                            </tr>*@
+                    </table>
+
+                </td>
+                <td></td>
+
+
+            </tr>
+
+        </table>
+
+        <div id="dvcollection" class="row grid-row">
+            <table id="tblcollections">
+                <thead>
+                    <tr>
+                        @*<th class="col-sm-6">EmpNo</th>*@
+                        <th class="col-sm-6">Name</th>
+
+                    </tr>
+                </thead>
+                <tr>Total count: {{Owners.length}}</tr>
+                <tbody ng-repeat="Emp in Owners">
+                    <tr ng-click="get(Emp)">
+                        @*<td> <span class="col-sm-6">{{Emp.EmpNo}}</span></td>*@
+                        <td>
+                            <span class="col-sm-6">{{Emp.OwnerName}}</span>
+                            <input type="button" id="delete" value="Delete" ng-click="delete()" />
+
+                        </td>
+
+
+                        @*<td>
+
+                            </td>*@
+                    </tr>
+                </tbody>
+
+            </table>
+            <div>{{Message}}</div>
+        </div>
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
+
+
+
+    </div>
+</body>
+</html>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angular-route.js"></script>
+<script src="~/Scripts/MyScripts/Module.js"></script>
+<script src="~/Scripts/MyScripts/Service.js"></script>
+<script src="~/Scripts/MyScripts/Controller.js"></script>
+<link href="~/fonts/bootstrap.css" rel="stylesheet" />
