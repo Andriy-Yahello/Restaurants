@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restaurant.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,8 @@ namespace Restaurant.Controllers
     public class LoudController : Controller
     {
         // GET: Loud
+        //Log from Restaurant.Filters;
+        [Log]
 
           //  [Authorize]//says that a user has to be loged in to perform a search loud/search
                                 //setting default value to chips
