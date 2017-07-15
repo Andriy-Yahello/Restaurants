@@ -6,7 +6,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@* if @RenderSection("featured", required: false) in _Layout.cshtml we can define @section featured{}*@
+
+@section featured{
+<!-- razor understands c# code @Model.Count()  -->
+<h1>Currenty there are @Model.Count() reviews</h1>
+    }
+
+<h2>Reviews from around the world</h2>
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
