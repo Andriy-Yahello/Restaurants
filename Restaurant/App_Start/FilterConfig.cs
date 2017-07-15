@@ -7,6 +7,8 @@ namespace Restaurant
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            //HandleErrorAttribute shows a friendly error page if error occurs
+
             filters.Add(new HandleErrorAttribute());
         }
     }
