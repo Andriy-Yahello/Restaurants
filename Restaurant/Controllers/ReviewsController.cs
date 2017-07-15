@@ -123,5 +123,13 @@ namespace Restaurant.Controllers
                 Rating = 4.4f
             }
         };
+        [ChildActionOnly]//is to make illigal to go Reviews/BestReview
+        public ActionResult BestReview()
+        {
+            var bestReviews = from r in _reviews
+                              orderby r.Rating descending
+                              select r;
+            return PartialView("_Review", bestReviews.First());
+        }
     }
 }
