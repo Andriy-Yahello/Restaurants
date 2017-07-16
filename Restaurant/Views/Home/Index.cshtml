@@ -1,8 +1,21 @@
-﻿@{
+﻿@model IEnumerable<Restaurant.Models.ClassRestaurant>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+
+@foreach (var i in Model)
+{
+    <div>
+        <h4>@i.Name</h4>
+        <div>@i.City, @i.Country</div>
+        <hr/>
+    </div>
+}
+
+
+@*<div class="jumbotron">
     <h1>ASP.NET</h1>
     <div>@ViewBag.Message</div>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
@@ -29,4 +42,4 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>*@
