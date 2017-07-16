@@ -1,22 +1,22 @@
 ﻿<!-- crating a strongly typed view-->
 
-@model IEnumerable<Restaurant.Models.Review>
+@*@model IEnumerable<Restaurant.Models.Review>
 
 @{
     ViewBag.Title = "Index";
-}
+}*@
 
 @* if @RenderSection("featured", required: false) in _Layout.cshtml we can define @section featured{}*@
 
 @section featured{
 <!-- razor understands c# code @Model.Count()  -->
-<h1>Currenty there are @Model.Count() reviews</h1>
+@*<h1>Currenty there are @Model.Count() reviews</h1>
     }
 
-<h2>Reviews from around the world</h2>
+<h2>Reviews from around the world</h2>*@
 
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -35,10 +35,10 @@
             @Html.DisplayNameFor(model => model.Rating)
         </th>
         <th></th>
-    </tr>
+    </tr>*@
 
-@foreach (var item in Model) {
+@*@foreach (var item in Model) {
    @Html.Partial("_Review", item);
 }
 
-</table>
+</table>*@
