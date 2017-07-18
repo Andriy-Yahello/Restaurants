@@ -23,7 +23,19 @@ namespace Restaurant.Controllers
             //ViewBag.Message = message;
             //go to db and find restaurants
             //retrive all and turn into a list
-            var model = _db.Restaurants.ToList();
+            var model = from r in _db.Restaurants
+                        orderby r.Reviews.Average(rev => rev.Rating) descending
+                        //orderby r.Reviews.Count descending
+                        //select r;
+                        //we defined a new class
+                        select new RestaurantListVM{
+                            Id = r.Id,
+                            Name = r.Name,
+                            City = r.City,
+                            Country = r.Country,
+                            CountOfReviews = r.Reviews.Count()
+                        };
+
 
             return View(model);
         }
