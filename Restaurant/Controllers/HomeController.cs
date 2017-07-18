@@ -23,19 +23,30 @@ namespace Restaurant.Controllers
             //ViewBag.Message = message;
             //go to db and find restaurants
             //retrive all and turn into a list
-            var model = from r in _db.Restaurants
-                        orderby r.Reviews.Average(rev => rev.Rating) descending
-                        //orderby r.Reviews.Count descending
-                        //select r;
-                        //we defined a new class
-                        select new RestaurantListVM{
-                            Id = r.Id,
-                            Name = r.Name,
-                            City = r.City,
-                            Country = r.Country,
-                            CountOfReviews = r.Reviews.Count()
-                        };
-
+            //var model = from r in _db.Restaurants
+            //            orderby r.Reviews.Average(rev => rev.Rating) descending
+            //            //orderby r.Reviews.Count descending
+            //            //select r;
+            //            //we defined a new class
+            //            select new RestaurantListVM{
+            //                Id = r.Id,
+            //                Name = r.Name,
+            //                City = r.City,
+            //                Country = r.Country,
+            //                CountOfReviews = r.Reviews.Count()
+            //            };
+            //we can do the same using extention method
+            var model = _db.Restaurants
+                .OrderByDescending(r => 
+                r.Reviews.Average(rev => rev.Rating))
+                .Select(r => new RestaurantListVM
+                {
+                    Id = r.Id,
+                    Name = r.Name,
+                    City = r.City,
+                    Country = r.Country,
+                    CountOfReviews = r.Reviews.Count()
+                });
 
             return View(model);
         }
