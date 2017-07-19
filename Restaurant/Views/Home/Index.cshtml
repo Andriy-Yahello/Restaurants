@@ -1,8 +1,16 @@
-﻿@model IEnumerable<Restaurant.Models.ClassRestaurant>
+﻿@model IEnumerable<Restaurant.Models.RestaurantListVM>
 
 @{
     ViewBag.Title = "Home Page";
 }
+
+<!-- a user ui for serching where searchT is from HomeController-->
+<form method="get">
+    <input type="search" name="searchT" />
+    <input type="submit" value="Find by name" />
+
+</form>
+
 
 
 @foreach (var i in Model)
@@ -10,6 +18,7 @@
     <div>
         <h4>@i.Name</h4>
         <div>@i.City, @i.Country</div>
+        <div>@i.CountOfReviews</div>
         <hr/>
     </div>
 }

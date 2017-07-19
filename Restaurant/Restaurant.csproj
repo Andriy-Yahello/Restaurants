@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClassRestaurantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoudController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -284,9 +285,15 @@
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Reviews\_Review.cshtml" />
+    <Content Include="Views\ClassRestaurants\Create.cshtml" />
+    <Content Include="Views\ClassRestaurants\Delete.cshtml" />
+    <Content Include="Views\ClassRestaurants\Details.cshtml" />
+    <Content Include="Views\ClassRestaurants\Edit.cshtml" />
+    <Content Include="Views\ClassRestaurants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\FamousRestaurants\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
