@@ -11,8 +11,8 @@ namespace Restaurant.Controllers
     {
 
         Food _db = new Food();
-
-        public ActionResult Index()
+        //providing an ability to find an item. assuming that initial query is empty
+        public ActionResult Index(string searchT = null)
         {
             //var controller = RouteData.Values["controller"];
             //var action = RouteData.Values["action"];
@@ -39,6 +39,11 @@ namespace Restaurant.Controllers
             var model = _db.Restaurants
                 .OrderByDescending(r => 
                 r.Reviews.Average(rev => rev.Rating))
+                //if null we return all restaurants or finding the right one
+                //we can add /?search=m in url address to look up for query
+                .Where(r=>searchT == null || r.Name.StartsWith(searchT))
+                //Take(2) displays first 2
+                //.Take(2)
                 .Select(r => new RestaurantListVM
                 {
                     Id = r.Id,
