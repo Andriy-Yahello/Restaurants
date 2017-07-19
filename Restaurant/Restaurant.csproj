@@ -287,9 +287,10 @@
     <Content Include="Views\Reviews\_Review.cshtml" />
     <Content Include="Views\ClassRestaurants\Create.cshtml" />
     <Content Include="Views\ClassRestaurants\Delete.cshtml" />
-    <Content Include="Views\ClassRestaurants\Details.cshtml" />
     <Content Include="Views\ClassRestaurants\Edit.cshtml" />
     <Content Include="Views\ClassRestaurants\Index.cshtml" />
+    <Content Include="Views\Reviews\IndexView.cshtml" />
+    <Content Include="Views\Reviews\_Reviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

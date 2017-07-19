@@ -1,0 +1,18 @@
+﻿@model Restaurant.Models.ClassRestaurant
+
+
+
+@{
+    ViewBag.Title = "IndexView";
+}
+
+<h2>Views for @Model.Name</h2>
+
+@Html.Partial("_Reviews", @Model.Reviews)
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+

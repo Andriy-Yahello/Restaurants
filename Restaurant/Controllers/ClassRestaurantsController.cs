@@ -20,20 +20,7 @@ namespace Restaurant.Controllers
             return View(db.Restaurants.ToList());
         }
 
-        // GET: ClassRestaurants/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ClassRestaurant classRestaurant = db.Restaurants.Find(id);
-            if (classRestaurant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(classRestaurant);
-        }
+
 
         // GET: ClassRestaurants/Create
         public ActionResult Create()

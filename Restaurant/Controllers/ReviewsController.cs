@@ -1,9 +1,9 @@
-﻿//using Restaurant.Models;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
-//using System.Web.Mvc;
+﻿using Restaurant.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 //namespace Restaurant.Controllers
 //{
@@ -133,3 +133,32 @@
 //        }
 //    }
 //}
+
+
+namespace Restaurant.Controllers
+{
+    public class ReviewsController : Controller
+    {
+        Food _db = new Food();
+
+        // GET: Reviews
+        //Bind tells mvc model binderthat when it looks to find restaurantId param value
+        //look for somthing called id
+        //when it looks for restaurantid itwill look for the name id
+        public ActionResult IndexView([Bind(Prefix="id")]int restaurantId)
+        {
+            var restaurant = _db.Restaurants.Find(restaurantId);
+            if(restaurant != null)
+            {
+                return View(restaurant);
+            }
+            return HttpNotFound();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _db.Dispose();
+            base.Dispose(disposing);
+        }
+    }
+}

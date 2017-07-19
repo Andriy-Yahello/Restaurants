@@ -11,6 +11,7 @@ namespace Restaurant.Models
         public string Name { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public ICollection <Review> Reviews { get; set; }
+        //we add virtual to avoid error
+        public virtual ICollection <Review> Reviews { get; set; }
     }
 }
