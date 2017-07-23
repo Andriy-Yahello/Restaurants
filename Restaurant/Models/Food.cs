@@ -13,5 +13,15 @@ namespace Restaurant.Models
 
         public DbSet <ClassRestaurant> Restaurants { get; set; }
         public DbSet <Review> Reviews { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder mb)
+        //{
+        //    mb.Entity<ClassRestaurant>().HasMany(m => m.Reviews).WithMany();
+        //}
+
+        //protected override void OnModelCreating(DbModelBuilder mb)
+        //{
+        //    mb.Entity<ClassRestaurant>().ToTable("RestaurantId");
+        //}
     }
 }

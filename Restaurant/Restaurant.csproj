@@ -205,10 +205,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707161605249_InitialCreate.cs" />
-    <Compile Include="Migrations\201707161605249_InitialCreate.Designer.cs">
-      <DependentUpon>201707161605249_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -291,6 +287,7 @@
     <Content Include="Views\ClassRestaurants\Index.cshtml" />
     <Content Include="Views\Reviews\IndexView.cshtml" />
     <Content Include="Views\Reviews\_Reviews.cshtml" />
+    <Content Include="Views\Reviews\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,11 +300,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707161605249_InitialCreate.resx">
-      <DependentUpon>201707161605249_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

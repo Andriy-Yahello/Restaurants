@@ -145,14 +145,33 @@ namespace Restaurant.Controllers
         //Bind tells mvc model binderthat when it looks to find restaurantId param value
         //look for somthing called id
         //when it looks for restaurantid itwill look for the name id
-        public ActionResult IndexView([Bind(Prefix="id")]int restaurantId)
+        public ActionResult IndexView([Bind(Prefix="id")]int RestaurantId)
         {
-            var restaurant = _db.Restaurants.Find(restaurantId);
+            var restaurant = _db.Restaurants.Find(RestaurantId);
             if(restaurant != null)
             {
                 return View(restaurant);
             }
             return HttpNotFound();
+        }
+
+
+        [HttpGet]
+        public ActionResult Create(int RestaurantId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Review r)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Reviews.Add(r);
+                _db.SaveChanges();
+                return RedirectToAction("IndexView", new { id = r.RestaurantId });
+            }
+            return View(r);
         }
 
         protected override void Dispose(bool disposing)
