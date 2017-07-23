@@ -33,6 +33,14 @@ namespace Restaurant.Migrations
                  }
                  }
                  );
+
+            //adding mock data to work with ajax
+            for (int i = 0; i < 997; i++)
+            {
+                context.Restaurants.AddOrUpdate(r => r.Name,
+                 new ClassRestaurant { Name = i.ToString(), City = "Lviv", Country = "Ukraine" }
+        );
+            }
         }
     }
 }
