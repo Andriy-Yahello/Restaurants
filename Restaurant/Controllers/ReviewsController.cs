@@ -183,6 +183,9 @@ namespace Restaurant.Controllers
         }
 
         [HttpPost]
+        //[Bind(Exclude ="ReviewerName")] frevants model from editig even if
+        //its not shown 
+        //public ActionResult Edit([Bind(Exclude ="ReviewerName")] Review r)
         public ActionResult Edit(Review r)
         {
             if (ModelState.IsValid)
