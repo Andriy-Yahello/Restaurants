@@ -7,7 +7,30 @@ using System.Web;
 
 namespace Restaurant.Models
 {
-    public class Review
+    public class MaxWordsAttribute : ValidationAttribute
+    { 
+        public MaxWordsAttribute(int maxWords) : base("{0} has too many words.")
+        {
+            _maxWords = maxWords;
+        }
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value != null)
+            {
+                var valueAsString = value.ToString();
+                if(valueAsString.Split(' ').Length >_maxWords)
+                {
+                    var errorMessage = FormatErrorMessage(validationContext.DisplayName);
+                    return new ValidationResult(errorMessage);
+                }
+            }
+            return ValidationResult.Success;
+        }
+
+        private readonly int _maxWords;
+    }
+    public class Review : IValidatableObject
     {
        
         public int Id { get; set; }
@@ -28,7 +51,16 @@ namespace Restaurant.Models
         [Display(Name = "User Name")]
         //if a user forfot to specipy a name
         [DisplayFormat(NullDisplayText = "anonymous")]
+        //custom validation attribute
+        [MaxWords(2)]
         public string ReviewerName { get; set; }
         public int RestaurantId { get; set; }
+
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            if (Rating < 2 && ReviewerName == "Joe") {
+                yield return new ValidationResult("You are not allowed to make changes");
+            }
+        }
     }
 }
