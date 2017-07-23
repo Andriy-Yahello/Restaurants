@@ -12,10 +12,6 @@
             @Html.DisplayNameFor(model => model.ReviewerName)
         </th>
 
-        <th>
-
-            @Html.DisplayNameFor(model => model.RestaurantId)
-        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -29,9 +25,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReviewerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestaurantId)
             </td>
 
             <td>

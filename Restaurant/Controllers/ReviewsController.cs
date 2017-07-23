@@ -1,6 +1,7 @@
 ﻿using Restaurant.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -168,6 +169,31 @@ namespace Restaurant.Controllers
             if (ModelState.IsValid)
             {
                 _db.Reviews.Add(r);
+                _db.SaveChanges();
+                return RedirectToAction("IndexView", new { id = r.RestaurantId });
+            }
+            return View(r);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int Id)
+        {
+            var model = _db.Reviews.Find(Id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Review r)
+        {
+            if (ModelState.IsValid)
+            {
+                //Entry IPA is a way to tell EF here is a review that I want you to start tracking
+                //so it can make changes for this review
+                //its not a new review 
+                //this is the review that already in data base
+                //we just want to take a oversheet of this object
+                //and treat it as if it had data inside
+                _db.Entry(r).State = EntityState.Modified;
                 _db.SaveChanges();
                 return RedirectToAction("IndexView", new { id = r.RestaurantId });
             }
