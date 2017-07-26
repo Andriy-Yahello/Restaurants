@@ -5,23 +5,54 @@
 }
 
 <!-- a user ui for serching where searchT is from HomeController-->
-<form method="get">
+@*<form method="get">
     <input type="search" name="searchT" />
     <input type="submit" value="Find by name" />
 
-</form>
+</form>*@
+
+<!-- Ajax.BeginForm is very  similar to html.beginForm it writes a form tag and we can tell want controller and action a rout value to use with but ajax.BeginForm will make an asink request to the server that redraws a portion of a screen we need to show what part of a screen to update and we can do that with option command-->
+@*@using (Ajax.BeginForm(
+                        new AjaxOptions
+                        {
+
+                            //make a get request
+                            HttpMethod = "get",
+                            //whenever cames back should replace the content of the page that currenty undentified by this  UpdateTargetId
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "restaurantList"
+                            //we need to add an element with id restaurantList
+                        }))
+    {
+        <input type = "search" name="searchT" />
+        <input type = "submit" value="Find by name" />
+    }*@
 
 
 
-@foreach (var i in Model)
-{
-    <div>
-        <h4>@i.Name</h4>
-        <div>@i.City, @i.Country</div>
-        <div>@i.CountOfReviews</div>
-        <hr/>
-    </div>
-}
+<!-- we explicitly specify action using Url helper and too custom data attributes data-my-aja for asyn and data-my-target is a dom element what needs to be uodated from form submition-->
+<!-- we create a script to interprite theese attributes my.js-->
+<!-- we add my.js to bundle-->
+    <form method="get" action="@Url.Action("Index")" data-my-ajax="true" data-my-target="#restaurantList">
+        <input type="search" name="searchT" data-my-autocomplete="@Url.Action("Autocomplete")"/>
+        <input type="submit" value="Find by name" />
+
+    </form>
+
+
+    @Html.Partial("_Restaurants", Model)
+
+<!-- we check if the request comes from partialview in homecontroller-->
+
+
+
+
+
+
+
+
+
+
 
 
 @*<div class="jumbotron">
