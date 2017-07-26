@@ -10,7 +10,19 @@ $(function(){
     //instead post event to the server it will go to my.js code ajaxFormSubmit
     $("form[data-my-ajax='true']").submit(ajaxFormSubmit);
    
+    var submitAutocompleteForm = function (event, ui) {
+        //this will point to dom element that we interacting with (input)
+        var $input = $(this);
+        //we set its value
+        //ui is a parameter that autocomplete passes in
+        $input.val(ui.item.label);
+        //finding the form first
+                                    //first form
+        var $form = $input.parents("form:first");
+        //tell aform to submit itself
+        $form.submit();
 
+    }
 
     var createAutocomplete = function () {
         //when jquery invokes this function it will pass along the input as this parameter
@@ -23,7 +35,10 @@ $(function(){
             //tell widget autocomplete where get the data
             //we just take the url that embeded in data- attribute
             //will pull out using attribute 'attr' and put it on a source property on options object
-            source: $input.attr("data-my-autocomplete")
+            source: $input.attr("data-my-autocomplete"),
+            //when a user selects something
+            //we call a function submitAutocompleteForm
+            select: submitAutocompleteForm 
         };
 
         //to wire up autocomplete we need to go to input invoke autocomplete and oass it option object
