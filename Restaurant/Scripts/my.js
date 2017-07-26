@@ -3,12 +3,7 @@
 //$ mean jquery will execute code when dom is ready
 $(function(){
     
-    //a jquery selector for looking all forms that mach particular attribute
-    //jquery can use css selectors
-    //when we selected elements we wire up submit event 
-    //when user clicks submit button
-    //instead post event to the server it will go to my.js code ajaxFormSubmit
-    $("form[data-my-ajax='true']").submit(ajaxFormSubmit);
+   
    
     var submitAutocompleteForm = function (event, ui) {
         //this will point to dom element that we interacting with (input)
@@ -67,15 +62,31 @@ $(function(){
         //if it is successful it will send back data
         $.ajax(options).done(function (data) {
             //take a identifier data-my-target
-            var $target = $($form.attr('data-my-target'));
+            var $target = $($form.attr("data-my-target"));
+
+            var $newHtml = $(data);
             //we replace data-my-target with html we got from the server
-            $target.replaceWith(data);
+            $target.replaceWith($newHtml);
+
+            
+            $newHtml.effect("highlight");
         });
     //stop browser his default actioh from going to the server and redrawing page
         return false;
 
     };
 
+
+    
+
+
+    //a jquery selector for looking all forms that mach particular attribute
+    //jquery can use css selectors
+    //when we selected elements we wire up submit event 
+    //when user clicks submit button
+    //instead post event to the server it will go to my.js code ajaxFormSubmit
+
+    $("form[data-my-ajax='true']").submit(ajaxFormSubmit);
 
     $("input[data-my-autocomplete]").each(createAutocomplete);
 });
