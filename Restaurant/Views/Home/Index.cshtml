@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Restaurant.Models.RestaurantListVM>
+﻿@*@model IEnumerable<Restaurant.Models.RestaurantListVM>*@
+
+@model IPagedList<RestaurantListVM>
 
 @{
     ViewBag.Title = "Home Page";
@@ -39,7 +41,7 @@
 
     </form>
 
-
+<!-- we also need to change namespace in partial view-->
     @Html.Partial("_Restaurants", Model)
 
 <!-- we check if the request comes from partialview in homecontroller-->

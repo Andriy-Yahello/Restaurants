@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace Restaurant.Controllers
 {
@@ -31,8 +32,9 @@ namespace Restaurant.Controllers
 
 
         //providing an ability to find an item. assuming that initial query is empty
-        public ActionResult Index(string searchT = null)
+        public ActionResult Index(int? page,string searchT = null )
         {
+            var pageNumber = (page ?? 1);
             //var controller = RouteData.Values["controller"];
             //var action = RouteData.Values["action"];
             //var id = RouteData.Values["id"];
@@ -56,13 +58,14 @@ namespace Restaurant.Controllers
             //            };
             //we can do the same using extention method
             var model = _db.Restaurants
-                .OrderByDescending(r => 
+                .OrderByDescending(r =>
+                //r.Id)//for correct work of paging
                 r.Reviews.Average(rev => rev.Rating))
                 //if null we return all restaurants or finding the right one
                 //we can add /?search=m in url address to look up for query
                 .Where(r=>searchT == null || r.Name.StartsWith(searchT))
                 //Take(2) displays first 2
-                //.Take(2)
+                
                 .Select(r => new RestaurantListVM
                 {
                     Id = r.Id,
@@ -70,7 +73,7 @@ namespace Restaurant.Controllers
                     City = r.City,
                     Country = r.Country,
                     CountOfReviews = r.Reviews.Count()
-                });
+                }).ToPagedList(pageNumber, 2);
 
             if (Request.IsAjaxRequest())
             {

@@ -72,3 +72,7 @@ E:\app\c#\14072017\Restaurant\Restaurant.Tests\obj\Debug\Restaurant.Tests.pdb
 E:\app\c#\14072017\Restaurant\Restaurant.Tests\bin\Debug\EntityFramework.SqlServer.dll
 E:\app\c#\14072017\Restaurant\Restaurant.Tests\bin\Debug\EntityFramework.SqlServer.xml
 E:\app\c#\14072017\Restaurant\Restaurant.Tests\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+E:\app\c#\14072017\Restaurant\Restaurant.Tests\bin\Debug\PagedList.dll
+E:\app\c#\14072017\Restaurant\Restaurant.Tests\bin\Debug\PagedList.Mvc.dll
+E:\app\c#\14072017\Restaurant\Restaurant.Tests\bin\Debug\PagedList.xml
+E:\app\c#\14072017\Restaurant\Restaurant.Tests\bin\Debug\PagedList.Mvc.xml

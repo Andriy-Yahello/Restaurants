@@ -1,13 +1,20 @@
-﻿@model IEnumerable<Restaurant.Models.RestaurantListVM>
+﻿@*@model IEnumerable<Restaurant.Models.RestaurantListVM>*@
+@model IPagedList<RestaurantListVM>
 
 <div id="restaurantList">
+
+    <div class="pagedList" data-my-target="#restaurantList">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page}),
+        PagedListRenderOptions.MinimalWithPageCountText)
+    </div>
+
 
     @foreach (var i in Model)
     {
         <div>
             <h4>@i.Name</h4>
             <div>@i.City, @i.Country</div>
-            <div>@i.CountOfReviews</div>
+            <div>Reviews: @i.CountOfReviews</div>
             <hr />
         </div>
     }

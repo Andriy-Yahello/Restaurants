@@ -63,12 +63,15 @@ $(function(){
         $.ajax(options).done(function (data) {
             //take a identifier data-my-target
             var $target = $($form.attr("data-my-target"));
-
+            //we take html that comming from a server
+            //wrap it into jquery
+            //and manipulate it with jquery ui
             var $newHtml = $(data);
             //we replace data-my-target with html we got from the server
+            //after we replaced restaurant list with new html
             $target.replaceWith($newHtml);
 
-            
+            //apply an effect to dom element
             $newHtml.effect("highlight");
         });
     //stop browser his default actioh from going to the server and redrawing page

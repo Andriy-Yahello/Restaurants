@@ -99,3 +99,7 @@ E:\app\c#\14072017\Restaurant\Restaurant\bin\ru\Microsoft.Owin.Security.Microsof
 E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\Restaurant.csprojResolveAssemblyReference.cache
 E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\Restaurant.dll
 E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\Restaurant.pdb
+E:\app\c#\14072017\Restaurant\Restaurant\bin\PagedList.dll
+E:\app\c#\14072017\Restaurant\Restaurant\bin\PagedList.Mvc.dll
+E:\app\c#\14072017\Restaurant\Restaurant\bin\PagedList.xml
+E:\app\c#\14072017\Restaurant\Restaurant\bin\PagedList.Mvc.xml
