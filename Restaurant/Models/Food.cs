@@ -10,7 +10,8 @@ namespace Restaurant.Models
     {
         //we can configure db context
         public Food() : base("name=DefaultConnection") { }
-
+        //update-database -Verbose
+        public DbSet <UserProfile> UserProfiles { get; set; }
         public DbSet <ClassRestaurant> Restaurants { get; set; }
         public DbSet <Review> Reviews { get; set; }
 

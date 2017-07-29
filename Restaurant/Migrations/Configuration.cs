@@ -6,6 +6,8 @@ namespace Restaurant.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web.Security;
+    using WebMatrix.WebData;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Restaurant.Models.Food>
     {
@@ -110,12 +112,38 @@ namespace Restaurant.Migrations
                  );
 
             //adding mock data to work with ajax
-        //    for (int i = 0; i < 997; i++)
-        //    {
-        //        context.Restaurants.AddOrUpdate(r => r.Name,
-        //         new ClassRestaurant { Name = i.ToString(), City = "Lviv", Country = "Ukraine" }
-        //);
-        //    }
+            //    for (int i = 0; i < 997; i++)
+            //    {
+            //        context.Restaurants.AddOrUpdate(r => r.Name,
+            //         new ClassRestaurant { Name = i.ToString(), City = "Lviv", Country = "Ukraine" }
+            //);
+            //    }
+
+            SeedMembership();
+        }
+
+        private void SeedMembership()
+        {
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", 
+                "UserProfile", "UserId","UserName", autoCreateTables: true);
+
+            var roles = (SimpleRoleProvider)Roles.Provider;
+            var membership = (SimpleMembershipProvider)Membership.Provider;
+
+            if (!roles.RoleExists("Admin"))
+            {
+                roles.CreateRole("Admin");
+            }
+            if (membership.GetUser("lofongi@at.ua", false)==null)
+            {
+                membership.CreateUserAndAccount("lofongi@at.ua", "@As120120");
+            }
+            if (!roles.GetRolesForUser("lofongi@at.ua").Contains("Admin"))
+            {
+                roles.AddUsersToRoles(new[] { "lofongi@at.ua" }, new[] { "admin" });
+            }
+
+            //update-database -Verbose
         }
     }
 }

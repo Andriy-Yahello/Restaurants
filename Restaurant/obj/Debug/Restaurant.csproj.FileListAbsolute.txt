@@ -103,3 +103,7 @@ E:\app\c#\14072017\Restaurant\Restaurant\bin\PagedList.dll
 E:\app\c#\14072017\Restaurant\Restaurant\bin\PagedList.Mvc.dll
 E:\app\c#\14072017\Restaurant\Restaurant\bin\PagedList.xml
 E:\app\c#\14072017\Restaurant\Restaurant\bin\PagedList.Mvc.xml
+E:\app\c#\14072017\Restaurant\Restaurant\bin\WebMatrix.Data.dll
+E:\app\c#\14072017\Restaurant\Restaurant\bin\WebMatrix.WebData.dll
+E:\app\c#\14072017\Restaurant\Restaurant\bin\WebMatrix.WebData.xml
+E:\app\c#\14072017\Restaurant\Restaurant\bin\WebMatrix.Data.xml

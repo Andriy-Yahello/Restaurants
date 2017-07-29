@@ -8,6 +8,7 @@ using PagedList;
 
 namespace Restaurant.Controllers
 {
+    //[Authorize(Users = "lofongi")]
     public class HomeController : Controller
     {
 
@@ -30,7 +31,7 @@ namespace Restaurant.Controllers
 
 
 
-
+        //[AllowAnonymous]
         //providing an ability to find an item. assuming that initial query is empty
         public ActionResult Index(int? page,string searchT = null )
         {
@@ -82,6 +83,8 @@ namespace Restaurant.Controllers
 
             return View(model);
         }
+
+        [Authorize]//only authorized users can view about
 
         public ActionResult About()
         {
