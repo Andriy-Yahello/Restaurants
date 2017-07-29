@@ -34,8 +34,14 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
-        <hr />
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        
+       @* <hr />*@
       @*  @Html.Action("BestReview", "Reviews")*@
         <footer>
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>

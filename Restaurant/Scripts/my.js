@@ -80,6 +80,36 @@ $(function(){
     };
 
 
+    var getPage =  function (){
+        //pointing to ancor tag the user clicked on
+        //and wrap it with jquery
+        var $a = $(this);
+
+        //we will extract href attribute on that ancor tag
+        //where to point to corect page number
+        var options = {
+            url: $a.attr("href"),
+            //rememmbering a searchTerm
+            //we add data to request
+            data: $("form").serialize(),
+            type: "get"
+        };
+
+
+        //given options object that we just build
+        //we make a get request and when its done
+        //we have a new data call function target
+        //we go and find target that we need to update
+        //it will be restaurant list
+        $.ajax(options).done(function (data) {
+            //we looking for this restaurantList element tag data-my-target
+            //we select it and replace it with data from a server
+            //we need to restart project
+            var target = $a.parents("div.pagedList").attr("data-my-target");
+            $(target).replaceWith(data);
+        });
+        return false;
+    };
     
 
 
@@ -92,4 +122,11 @@ $(function(){
     $("form[data-my-ajax='true']").submit(ajaxFormSubmit);
 
     $("input[data-my-autocomplete]").each(createAutocomplete);
+
+
+    //async redrawing of a page
+    //find class body-content in layout view
+    //we picking ancor tag inside  .pagedList in _Restaurant.cshtml  
+    //we intercepting this event and call getPage
+    $(".main-content").on("click", ".pagedList a", getPage);
 });
