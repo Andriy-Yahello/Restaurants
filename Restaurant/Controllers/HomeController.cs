@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Web.UI;
 
 namespace Restaurant.Controllers
 {
@@ -29,8 +30,29 @@ namespace Restaurant.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
+        //mvc able to cache small part of code independently
+        //for demonstration
+        //[ChildActionOnly]
+        //[OutputCache(Duration = 60)]
+        //public ActionResult SayHello()
+        //{
+        //    return Content("hello");
+        //}
 
 
+
+        [OutputCache(Duration =360, VaryByHeader ="X-Requested-With", Location =OutputCacheLocation.Server)]//for perfomence
+
+        //in browser if we go to bookmark https://localhost:44306/?searchT=M
+        //we will get a cache we missing syles and scripts
+        //to fix this we need VaryByHeader ="X-Requested-With"
+        //because it will be present on ajax request not on a full request
+        //asp.net will be able to tell te difference between those 2
+        //and cache different responses
+        // Location =OutputCacheLocation.Server allowing cache on a server
+        //it will send instruction to the browser
+        //browser will always come to the server to check
+        //we need to clear browser cache before debuging
 
         //[AllowAnonymous]
         //providing an ability to find an item. assuming that initial query is empty
