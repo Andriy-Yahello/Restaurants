@@ -42,8 +42,10 @@ namespace Restaurant.Models
         [Required]
         public float Rating { get; set; }
 
-        [Required]
-        //leng of body is less then 900 characters
+
+        //a cuctom message for error
+        [Required(ErrorMessageResourceType =typeof(Restaurant.Views.Home.Resources), ErrorMessageResourceName = "ErMes")]
+        //length of body is less then 900 characters
         [StringLength(900)]
         //and update db  update-database -Verbose -force
         public string Body { get; set; }
