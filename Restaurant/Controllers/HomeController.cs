@@ -41,7 +41,11 @@ namespace Restaurant.Controllers
 
 
 
-        [OutputCache(Duration =360, VaryByHeader ="X-Requested-With", Location =OutputCacheLocation.Server)]//for perfomence
+        //[OutputCache(Duration =360, VaryByHeader ="X-Requested-With", Location =OutputCacheLocation.Server)]//for perfomence
+
+        //now we having duration in Web.config
+        [OutputCache(CacheProfile ="long", VaryByHeader = "X-Requested-With", Location = OutputCacheLocation.Server)]
+
 
         //in browser if we go to bookmark https://localhost:44306/?searchT=M
         //we will get a cache we missing syles and scripts
