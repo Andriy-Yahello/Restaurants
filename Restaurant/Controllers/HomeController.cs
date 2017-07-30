@@ -8,6 +8,7 @@ using PagedList;
 
 namespace Restaurant.Controllers
 {
+    [RequireHttps]
     //[Authorize(Users = "lofongi")]
     public class HomeController : Controller
     {
