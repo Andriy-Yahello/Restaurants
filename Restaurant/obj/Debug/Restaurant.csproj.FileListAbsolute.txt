@@ -147,3 +147,11 @@ E:\app\c#\14072017\Restaurant\Restaurant\bin\Microsoft.AspNet.TelemetryCorrelati
 E:\app\c#\14072017\Restaurant\Restaurant\bin\System.Diagnostics.DiagnosticSource.dll
 E:\app\c#\14072017\Restaurant\Restaurant\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 E:\app\c#\14072017\Restaurant\Restaurant\bin\System.Diagnostics.DiagnosticSource.xml
+E:\app\c#\14072017\Restaurant\Restaurant\bin\tr\Restaurant.resources.dll
+E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\Restaurant.Views.Home.Resources.resources
+E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\Restaurant.Views.Home.Resources.tr.resources
+E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\Restaurant.csproj.GenerateResource.Cache
+E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\tr\Restaurant.resources.dll
+E:\app\c#\14072017\Restaurant\Restaurant\bin\uk\Restaurant.resources.dll
+E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\Restaurant.Views.Home.Resources.uk.resources
+E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\uk\Restaurant.resources.dll

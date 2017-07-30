@@ -44,7 +44,7 @@ namespace Restaurant.Controllers
         //[OutputCache(Duration =360, VaryByHeader ="X-Requested-With", Location =OutputCacheLocation.Server)]//for perfomence
 
         //now we having duration in Web.config
-        [OutputCache(CacheProfile ="long", VaryByHeader = "X-Requested-With", Location = OutputCacheLocation.Server)]
+        [OutputCache(CacheProfile ="long", VaryByHeader = "X-Requested-With; Accept-Language", Location = OutputCacheLocation.Server)]
 
 
         //in browser if we go to bookmark https://localhost:44306/?searchT=M
@@ -57,6 +57,7 @@ namespace Restaurant.Controllers
         //it will send instruction to the browser
         //browser will always come to the server to check
         //we need to clear browser cache before debuging
+        // ; Accept-Languag we add for also update language
 
         //[AllowAnonymous]
         //providing an ability to find an item. assuming that initial query is empty
