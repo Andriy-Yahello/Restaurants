@@ -42,6 +42,21 @@
     </form>
 
 
+    @{
+        var amount = 40.2m;
+        var cDate = new DateTime(2017, 7, 30);
+    }
+
+    <div>
+        @amount.ToString("c")
+    </div>
+    <div>
+        @cDate.ToShortDateString()
+    </div>
+    @* we add <globalization culture="auto" uiCulture="auto"/> in web.config *@
+@* we can chage language in browser headers and it will display according format *@
+
+
     @*@Html.Action("SayHello")*@
 
 
