@@ -155,3 +155,5 @@ E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\tr\Restaurant.resources.dll
 E:\app\c#\14072017\Restaurant\Restaurant\bin\uk\Restaurant.resources.dll
 E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\Restaurant.Views.Home.Resources.uk.resources
 E:\app\c#\14072017\Restaurant\Restaurant\obj\Debug\uk\Restaurant.resources.dll
+E:\app\c#\14072017\Restaurant\Restaurant\bin\Elmah.dll
+E:\app\c#\14072017\Restaurant\Restaurant\bin\Elmah.Mvc.dll
