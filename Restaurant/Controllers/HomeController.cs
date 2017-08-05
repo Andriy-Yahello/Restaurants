@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using System.Web.UI;
+using System.Configuration;
 
 namespace Restaurant.Controllers
 {
@@ -132,6 +133,10 @@ namespace Restaurant.Controllers
                 }).
                 //ToPagedList(pageNumber, 2);
                 ToPagedList(page, 10);
+
+            //ConfigurationManager give access to connrection string and anything in web.config
+            //we go to home index
+            ViewBag.MailServer = ConfigurationManager.AppSettings["MailServer"];
 
             if (Request.IsAjaxRequest())
             {
