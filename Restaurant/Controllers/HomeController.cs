@@ -14,12 +14,35 @@ namespace Restaurant.Controllers
     public class HomeController : Controller
     {
 
-        Food _db = new Food();
+        //Food _db = new Food();
+
+        //for test
+        IFoodDb _db;
+        //when a controller is construcred we need to initialize it to point to
+        //something fake
+
+
+            //constructor will execute when we run the app on a web server with SQL
+        public HomeController()
+        {
+            _db = new Food();
+        }
+
+        //this will call from unit test
+        //we go to HomeControllerTest
+        public HomeController(IFoodDb db)
+        {
+            _db = db;    
+        }
+
 
         public ActionResult Autocomplete(string term)
         {
 
-            var model = _db.Restaurants
+            var model =
+                //_db.Restaurants
+                _db.Query<ClassRestaurant>()
+
                 .Where(r => r.Name.StartsWith(term))
                 .Take(10)
                 .Select(r => new
@@ -61,9 +84,10 @@ namespace Restaurant.Controllers
 
         //[AllowAnonymous]
         //providing an ability to find an item. assuming that initial query is empty
-        public ActionResult Index(int? page,string searchT = null )
+        //public ActionResult Index(int? page,string searchT = null )
+        public ActionResult Index(string searchT = null, int page = 1)
         {
-            var pageNumber = (page ?? 1);
+            //var pageNumber = (page ?? 1);
             //var controller = RouteData.Values["controller"];
             //var action = RouteData.Values["action"];
             //var id = RouteData.Values["id"];
@@ -86,7 +110,10 @@ namespace Restaurant.Controllers
             //                CountOfReviews = r.Reviews.Count()
             //            };
             //we can do the same using extention method
-            var model = _db.Restaurants
+            var model =
+
+                //_db.Restaurants
+                _db.Query<ClassRestaurant>()
                 .OrderByDescending(r =>
                 //r.Id)//for correct work of paging
                 r.Reviews.Average(rev => rev.Rating))
@@ -102,7 +129,9 @@ namespace Restaurant.Controllers
                     City = r.City,
                     Country = r.Country,
                     CountOfReviews = r.Reviews.Count()
-                }).ToPagedList(pageNumber, 2);
+                }).
+                //ToPagedList(pageNumber, 2);
+                ToPagedList(page, 10);
 
             if (Request.IsAjaxRequest())
             {

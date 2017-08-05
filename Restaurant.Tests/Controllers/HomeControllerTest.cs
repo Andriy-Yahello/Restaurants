@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Restaurant;
 using Restaurant.Controllers;
+using Restaurant.Tests.Features;
+using Restaurant.Tests.Fakes;
+using Restaurant.Models;
 
 namespace Restaurant.Tests.Controllers
 {
@@ -16,13 +19,18 @@ namespace Restaurant.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
 
+            var db = new FakeFoodDb();
+
+            db.AddSet(TestData.Restaurants);
+            //using fake in memmory db
+            HomeController controller = new HomeController(db);
+            controller.ControllerContext = new FakeControllerContext();
             // Act
             ViewResult result = controller.Index() as ViewResult;
-
+            IEnumerable<RestaurantListVM> model = result.Model as IEnumerable<RestaurantListVM>;
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(10, model.Count());
         }
 
         [TestMethod]
