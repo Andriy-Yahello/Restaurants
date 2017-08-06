@@ -13,7 +13,18 @@ namespace Restaurant.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            //we dont get explicite migration scripts or migration files in migrations folder
+            //insted when we go to package manager to update database
+            //it just make whatever changes it sees fit to do
+            //AutomaticMigrationsEnabled = true;
+
+            //for first deployment we willturn to state when we will be not using migrations anymore
+            //after we deploy we will get live data in database
+            //and delete databasw in sql server
+            ///we connect to (LocalDb)\MSSQLLocalDB
+            //close any exicting connections
+            //in Package manager console Add -Migrations InitialCreate
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Restaurant.Models.Food context)
@@ -124,8 +135,19 @@ namespace Restaurant.Migrations
 
         private void SeedMembership()
         {
+
+            //WE ansure that web security does not get initialized more then once
+            //because if it get called more then once
+            //this line of code will throw an exception
+            //if WebSecurity is not initialized we will initialize the database
+            //now we run migrations when app runs
+            //this initialize connection can run web app is running
+            //we also have a call intialize connection in global.asax.cs
+            if (!WebSecurity.Initialized)
+            { 
             WebSecurity.InitializeDatabaseConnection("DefaultConnection", 
                 "UserProfile", "UserId","UserName", autoCreateTables: true);
+            }
 
             var roles = (SimpleRoleProvider)Roles.Provider;
             var membership = (SimpleMembershipProvider)Membership.Provider;
